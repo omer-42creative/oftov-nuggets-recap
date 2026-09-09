@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>עוף טוב | סיכום קמפיין נאגטס</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --yellow:#FEC23D;
+  --yellow-2:#FFD470;
+  --yellow-deep:#E9A916;
+  --green:#054A1D;        /* of tov deep forest */
+  --green-2:#0B6B2C;
+  --green-3:#12833A;
+  --cream:#FFF7E4;
+  --cream-2:#FBEDCE;
+  --red:#E0164B;
+  --ink:#063313;
+  --slate:#5C6B5E;
+  --line:#E2D8BE;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Assistant',sans-serif;color:var(--green);background:var(--green);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.deck::-webkit-scrollbar{width:0}
+section.slide{
+  min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(62px,6.2vw,84px) clamp(22px,5.4vw,80px) clamp(70px,6.2vw,84px);
+  position:relative;overflow:visible;
+}
+h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
+
+/* ---------- themes ---------- */
+.sun{background:var(--yellow);color:var(--green)}
+.sun::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(5,74,29,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(5,74,29,.055) 1px,transparent 1px);
+  background-size:96px 96px}
+.forest{background:var(--green);color:var(--cream)}
+.forest::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 88% 12%,rgba(254,194,61,.13),transparent 46%),radial-gradient(circle at 6% 92%,rgba(18,131,58,.30),transparent 44%)}
+.cream{background:var(--cream);color:var(--green)}
+.paper{background:#fff;color:var(--green)}
+
+/* ---------- frame: rules + logos on every slide ---------- */
+.frame-t,.frame-b{position:absolute;left:clamp(24px,6vw,90px);right:clamp(24px,6vw,90px);display:flex;align-items:center;gap:18px;z-index:4}
+.frame-t{top:clamp(26px,3.2vw,40px)}
+.frame-b{bottom:clamp(24px,3vw,38px)}
+.frame-t .rule,.frame-b .rule{flex:1;height:2px;background:currentColor;opacity:.55}
+.logo42{height:clamp(28px,3vw,38px);width:auto;display:block;flex-shrink:0}
+.oftov{height:clamp(40px,4.4vw,58px);width:auto;display:block;flex-shrink:0}
+.forest .oftov{background:var(--cream);border-radius:50%;padding:7px 9px;box-shadow:0 0 0 1px rgba(255,247,228,.18)}
+.slidetag{font-family:'Rubik';font-weight:600;font-size:11.5px;letter-spacing:.16em;opacity:.6;white-space:nowrap}
+
+/* ---------- nav ---------- */
+#bar{position:fixed;top:0;right:0;height:4px;width:0%;background:var(--yellow);z-index:100;transition:width .15s linear}
+.forestbar #bar{background:var(--yellow)}
+#dots{position:fixed;left:20px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:11px}
+#dots button{width:9px;height:9px;border-radius:50%;border:1.5px solid currentColor;background:transparent;cursor:pointer;padding:0;transition:.25s;color:rgba(5,74,29,.45)}
+#dots button.light{color:rgba(255,247,228,.5)}
+#dots button.on{background:currentColor;transform:scale(1.4)}
+
+/* ---------- shared ---------- */
+.wrap{max-width:1220px;margin:0 auto;width:100%;position:relative;z-index:3}
+.eyebrow{font-family:'Rubik';font-weight:700;font-size:clamp(11px,1vw,13px);letter-spacing:.2em;
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;color:var(--green-3)}
+.forest .eyebrow{color:var(--yellow)}
+.sun .eyebrow{color:var(--green)}
+.eyebrow::before{content:"";width:24px;height:3px;background:currentColor;border-radius:2px}
+.shead{margin-bottom:clamp(16px,2.3vw,30px)}
+.shead h2{font-weight:800;font-size:clamp(25px,3.6vw,44px);line-height:1.06;letter-spacing:-.01em}
+.shead p{font-size:clamp(14px,1.28vw,17px);margin-top:10px;max-width:720px;line-height:1.5;opacity:.82}
+.src{font-size:11.8px;opacity:.62;margin-top:14px;line-height:1.5;max-width:960px}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+.d4{transition-delay:.28s}.d5{transition-delay:.35s}.d6{transition-delay:.42s}.d7{transition-delay:.49s}
+
+/* ================= HERO ================= */
+#hero{justify-content:center;overflow:hidden}
+.hero-in{max-width:1150px;position:relative;z-index:3}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:var(--yellow);
+  font-family:'Rubik';font-weight:700;font-size:13px;padding:9px 18px;border-radius:100px;margin-bottom:24px}
+#hero h1{font-weight:900;font-size:clamp(34px,7.4vw,94px);line-height:.98;letter-spacing:-.02em}
+#hero h1 em{font-style:normal;display:block;font-size:.44em;font-weight:800;margin-top:14px;letter-spacing:-.01em}
+.hero-sub{font-size:clamp(16px,1.9vw,23px);margin-top:26px;max-width:640px;line-height:1.5;font-weight:500}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:38px;font-family:'Rubik';font-weight:500;font-size:13.5px;opacity:.8}
+.hero-meta b{font-weight:700;opacity:1}
+.hero-pack{position:absolute;left:1%;bottom:4%;width:clamp(180px,26vw,380px);z-index:2;
+  filter:drop-shadow(0 26px 46px rgba(5,74,29,.30));transform:rotate(-7deg)}
+.hint{position:absolute;bottom:clamp(92px,9vw,116px);left:50%;transform:translateX(-50%);font-family:'Rubik';font-size:11.5px;letter-spacing:.14em;opacity:.6;text-align:center;z-index:5}
+.hint .chev{display:block;margin-top:6px;animation:bob 1.6s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ================= STORY BLOCKS ================= */
+.two{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(26px,4vw,56px);align-items:center}
+.two.wide{grid-template-columns:1.25fr .75fr}
+.stack{display:flex;flex-direction:column;gap:14px}
+.blk{border-radius:16px;padding:18px 22px;border:1px solid rgba(5,74,29,.14);background:rgba(255,255,255,.55)}
+.forest .blk{border-color:rgba(255,247,228,.16);background:rgba(255,247,228,.06)}
+.sun .blk{background:rgba(255,255,255,.42);border-color:rgba(5,74,29,.18)}
+.blk h4{font-weight:700;font-size:16px;margin-bottom:5px}
+.blk p{font-size:14.2px;line-height:1.5;opacity:.85}
+.blk .kn{font-family:'Rubik';font-weight:800;font-size:clamp(26px,3vw,38px);line-height:1}
+.forest .blk .kn{color:var(--yellow)}
+
+.quote{border-radius:16px;padding:20px 24px;background:rgba(255,255,255,.6);border-right:6px solid var(--red);
+  font-size:clamp(14.5px,1.4vw,18px);line-height:1.55;font-weight:500}
+.forest .quote{background:rgba(255,247,228,.07);border-right-color:var(--yellow);color:var(--cream)}
+.quote b{color:var(--red);font-weight:800}
+.forest .quote b{color:var(--yellow)}
+
+/* pivot slide */
+.pivot{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(16px,2.4vw,30px);align-items:stretch;max-width:1120px;margin:0 auto}
+.pcard{border-radius:20px;padding:clamp(20px,2.5vw,30px);border:1px solid rgba(255,247,228,.16);background:rgba(255,247,228,.05)}
+.pcard.was{opacity:.62}
+.pcard.now{border-color:var(--yellow);background:rgba(254,194,61,.11);box-shadow:0 0 44px rgba(254,194,61,.13)}
+.pcard .pk{font-family:'Rubik';font-weight:700;font-size:12px;letter-spacing:.14em;margin-bottom:16px;display:inline-block;padding:6px 14px;border-radius:100px}
+.pcard.was .pk{background:rgba(255,247,228,.12);color:var(--cream)}
+.pcard.now .pk{background:var(--yellow);color:var(--green)}
+.pcard h3{font-weight:800;font-size:clamp(20px,2.3vw,29px);line-height:1.2;margin-bottom:14px}
+.pcard.now h3{color:var(--yellow)}
+.pcard ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.pcard li{font-size:14px;line-height:1.45;padding-right:20px;position:relative;opacity:.9}
+.pcard li::before{content:"";position:absolute;right:0;top:9px;width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55}
+.pcard.now li::before{background:var(--yellow);opacity:1}
+.parrow{align-self:center;font-family:'Rubik';font-weight:800;font-size:22px;color:var(--green);background:var(--yellow);
+  width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* ================= KPI ================= */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kpis.five{grid-template-columns:repeat(5,1fr)}
+.kpi{border-radius:15px;padding:19px 17px;position:relative;overflow:hidden;
+  background:rgba(255,247,228,.06);border:1px solid rgba(255,247,228,.14)}
+.cream .kpi,.paper .kpi{background:#fff;border-color:var(--line);box-shadow:0 6px 26px rgba(5,74,29,.06)}
+.sun .kpi{background:rgba(255,255,255,.5);border-color:rgba(5,74,29,.16)}
+.kpi::after{content:"";position:absolute;top:0;right:0;height:4px;width:100%;background:linear-gradient(90deg,var(--yellow),transparent)}
+.cream .kpi::after,.paper .kpi::after{background:linear-gradient(90deg,var(--green-3),transparent)}
+.sun .kpi::after{background:linear-gradient(90deg,var(--green),transparent)}
+.kpi .num{font-weight:800;font-size:clamp(21px,2.3vw,32px);line-height:1;white-space:nowrap}
+.forest .kpi .num{color:var(--yellow)}
+.kpi .lbl{font-size:12.6px;margin-top:8px;line-height:1.32;opacity:.75}
+.kpi .sup{font-family:'Rubik';font-size:11.5px;font-weight:600;margin-top:8px;opacity:.6}
+
+/* ================= TABLE ================= */
+.tbl{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 34px rgba(5,74,29,.08);font-size:13.4px}
+.tbl th{font-family:'Rubik';font-weight:600;font-size:12px;color:var(--green);background:var(--cream-2);
+  padding:10px 11px;text-align:center;border-bottom:2px solid var(--line);white-space:nowrap}
+.tbl th.r{text-align:right}
+.tbl th small{display:block;font-weight:500;font-size:10.5px;opacity:.7;margin-top:2px}
+.tbl td{padding:8px 11px;border-bottom:1px solid var(--line);text-align:center;font-family:'Rubik';font-weight:500}
+.tbl td.name{text-align:right;font-weight:700;white-space:nowrap}
+.tbl td.mut{opacity:.62;font-weight:500}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tr.tot td{background:var(--cream);border-top:2px solid var(--green);font-weight:800;font-size:15px}
+.perf{display:inline-flex;align-items:center;gap:9px;min-width:118px;justify-content:flex-start}
+.perf .pv{font-weight:800;width:44px;text-align:right}
+.perf .pt{flex:1;height:7px;border-radius:5px;background:var(--cream-2);overflow:hidden;min-width:56px}
+.perf .pf{height:100%;border-radius:5px;width:0;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.in .perf .pf{width:var(--w)}
+.over .pv{color:var(--green-3)}   .over .pf{background:var(--green-3)}
+.near .pv{color:var(--yellow-deep)} .near .pf{background:var(--yellow-deep)}
+.under .pv{color:var(--red)}      .under .pf{background:var(--red)}
+.tblwrap{overflow-x:auto}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.tbl td{unicode-bidi:isolate}
+
+/* ================= CREATIVE GALLERY ================= */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,26px);max-width:1000px;margin:0 auto}
+.gal img{width:100%;max-height:min(46vh,420px);object-fit:contain;border-radius:14px;display:block;box-shadow:0 16px 40px rgba(5,74,29,.22)}
+.gcap{font-family:'Rubik';font-weight:600;font-size:12.4px;text-align:center;margin-top:10px;opacity:.75;line-height:1.35}
+.mix{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;align-items:start}
+.mix figure{border-radius:13px;overflow:hidden;background:#F4F1EA;box-shadow:0 10px 30px rgba(5,74,29,.14);position:relative}
+.mix img{width:100%;display:block;height:clamp(112px,21vh,200px);object-fit:contain;object-position:center;background:#F4F1EA}
+.mix figcaption{font-family:'Rubik';font-weight:600;font-size:11px;padding:7px 11px;background:#fff;color:var(--green);opacity:.85}
+.strip{display:flex;gap:11px;overflow:hidden;border-radius:14px}
+.strip img{flex:1;min-width:0;object-fit:cover;height:clamp(150px,17vw,230px);border-radius:12px;display:block}
+
+/* ================= COMMUNITY ================= */
+.comm{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,3.6vw,50px);align-items:center}
+.shots{display:flex;gap:14px}
+.shots img{width:50%;border-radius:13px;box-shadow:0 14px 36px rgba(5,74,29,.2);display:block;
+  max-height:clamp(200px,36vh,360px);object-fit:cover;object-position:top}
+.engage{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin-top:16px}
+.eg{border-radius:14px;padding:14px 17px;background:rgba(255,255,255,.55);border:1px solid rgba(5,74,29,.14)}
+.eg .en{font-family:'Rubik';font-weight:800;font-size:clamp(22px,2.4vw,30px);line-height:1}
+.eg .el{font-size:13px;opacity:.72;margin-top:5px}
+
+/* ================= CONCLUSIONS ================= */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{border-radius:16px;padding:19px 22px;display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);box-shadow:0 8px 28px rgba(5,74,29,.06)}
+.card .idx{font-family:'Rubik';font-weight:800;font-size:18px;min-width:40px;height:40px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--green);color:var(--yellow)}
+.card.hot .idx{background:var(--yellow);color:var(--green)}
+.card .h{font-family:'Rubik';font-weight:700;font-size:16.5px;display:block;margin-bottom:6px}
+.card p{font-size:14px;line-height:1.5;opacity:.85}
+
+/* ================= CLOSE ================= */
+#close{align-items:center;text-align:center;justify-content:center}
+#close h2{font-weight:900;font-size:clamp(38px,7.6vw,104px);line-height:1}
+#close .sub{font-size:clamp(16px,1.9vw,23px);margin-top:20px;font-weight:600;opacity:.85}
+.closerow{display:flex;gap:clamp(22px,5vw,68px);margin-top:44px;flex-wrap:wrap;justify-content:center}
+.closerow .n{font-family:'Rubik';font-weight:800;font-size:clamp(26px,3.4vw,46px);line-height:1}
+.closerow .l{font-size:12.5px;margin-top:7px;font-family:'Rubik';letter-spacing:.05em;opacity:.7}
+.signoff{margin-top:46px;font-family:'Rubik';font-size:13px;letter-spacing:.04em;opacity:.72}
+.signoff b{font-weight:700;opacity:1}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:1000px){
+  .kpis,.kpis.five{grid-template-columns:repeat(2,1fr)}
+  .two,.two.wide,.comm{grid-template-columns:1fr;gap:26px}
+  .pivot{grid-template-columns:1fr}
+  .parrow{transform:rotate(90deg);margin:0 auto}
+  .cards{grid-template-columns:1fr}
+  #dots{display:none}
+  .hero-pack{display:none}
+  .gal{grid-template-columns:1fr;max-width:340px}
+}
+@media(max-width:640px){
+  .kpis,.kpis.five{grid-template-columns:1fr}
+  .shots img{max-height:240px}
+  .strip img{height:120px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{transition:none;opacity:1;transform:none}
+  .perf .pf{transition:none}
+  html{scroll-behavior:auto}
+}
+@media print{
+  .deck{height:auto;overflow:visible}
+  section.slide{min-height:auto;page-break-after:always;break-after:page}
+  #dots,#bar,.hint{display:none}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav id="dots"></nav>
+
+<div class="deck" id="deck">
+
+<!-- ============ 1 · HERO ============ -->
+<section class="slide sun" id="hero" data-dot="פתיחה">
+  <div class="frame-t"><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="hero-in">
+    <span class="chip">🍗 עוף טוב · השקת נאגטס</span>
+    <h1>סליחה שלקח לנו<br>כל כך הרבה זמן<em>סיכום קמפיין הנאגטס</em></h1>
+    <p class="hero-sub">איך תובנה אחת מהשטח הפכה קמפיין השקה קלאסי לקמפיין התנצלות — ולמה זה עבד.</p>
+    <div class="hero-meta">
+      <span>תקופה: <b>יולי–ספטמבר 2026</b></span>
+      <span>שלבים: <b>תוכן · מדיה</b></span>
+      <span>תקציב כולל: <b>₪745,300</b></span>
+      <span>הוכן על ידי: <b>42creative</b></span>
+    </div>
+  </div>
+  <img class="hero-pack" data-a="pack" alt="אריזת נאגטס עוף טוב">
+  <div class="hint">גללו להמשך<span class="chev">▾</span></div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 2 · הבריף ============ -->
+<section class="slide forest" data-dot="נקודת הפתיחה">
+  <div class="frame-t"><span class="slidetag">01 · נקודת הפתיחה</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">איפה התחלנו</span>
+      <h2>מוצר חדש. אסטרטגיה קלאסית.</h2>
+      <p>עוף טוב יצאו עם נאגטס — קטגוריה שכל מתחרה כבר נמצא בה שנים. הבריף המקורי היה בריף השקה סטנדרטי: להכיר, לשכנע, להניע לניסיון.</p>
+    </div>
+    <div class="two">
+      <div class="stack">
+        <div class="blk reveal d1"><h4>המשימה</h4><p>להשיק את נאגטס עוף טוב בקטגוריה רוויה, לבנות מודעות רחבה ולהניע ניסיון ראשון בקרב משפחות וצעירים.</p></div>
+        <div class="blk reveal d2"><h4>האסטרטגיה שתוכננה</h4><p>קמפיין השקה בשני שלבים — שלב א' תוכן ויוצרים ליצירת באזז, שלב ב' מדיה רחבה לבניית מודעות. המסר: <b>למה כדאי לנסות את הנאגטס של עוף טוב</b>.</p></div>
+        <div class="blk reveal d3"><h4>המבנה</h4><p>29 יוצרי תוכן בברטר · 8 משפיענים מובילים · פעילות קהילה · ואחריהם קמפיין מדיה חוצה־פלטפורמות בתקציב ₪450,000.</p></div>
+      </div>
+      <div class="stack">
+        <div class="kpis" style="grid-template-columns:1fr 1fr">
+          <div class="kpi reveal d3"><div class="num">₪745,300</div><div class="lbl">תקציב כולל למהלך</div></div>
+          <div class="kpi reveal d4"><div class="num">3</div><div class="lbl">חודשי פעילות</div></div>
+          <div class="kpi reveal d5"><div class="num">37</div><div class="lbl">יוצרים ומשפיענים</div></div>
+          <div class="kpi reveal d6"><div class="num">7</div><div class="lbl">פלטפורמות מדיה</div></div>
+        </div>
+        <div class="quote reveal d7">ואז, עוד לפני שעלינו לאוויר, קיבלנו סיגנל מהשטח שאף אחד לא תכנן.</div>
+      </div>
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 3 · הסיגנל ============ -->
+<section class="slide cream" data-dot="הסיגנל">
+  <div class="frame-t"><span class="slidetag">02 · הסיגנל מהשטח</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">מה שקרה לפני שעלינו</span>
+      <h2>הצרכנים כבר קנו. בלי שאמרנו מילה.</h2>
+      <p>הנאגטס הגיעו למדפים לפני שהקמפיין עלה — ובקבוצות האוכל ברשת התחילה תנועה שלא ייצרנו. אנשים חיפשו את המוצר, צילמו אותו, שאלו איפה קונים.</p>
+    </div>
+    <div class="comm">
+      <div class="shots reveal d1">
+        <img data-a="fb1" alt="פוסט בקבוצת רעבים ברעבך">
+        <img data-a="fb2" alt="שיח אורגני בקבוצות אוכל">
+      </div>
+      <div>
+        <div class="quote reveal d2">״אחרי מלא פוסטים בקבוצה שמחפשים נאגטס מוכן לקנייה — <b>עוף טוב הרימו את הכפפה</b> והשיקו נאגטס!!!״<br><span style="font-size:14px;opacity:.65;display:block;margin-top:10px">— פוסט אורגני בקבוצת ״רעבים ברעבך״</span></div>
+        <div class="engage">
+          <div class="eg reveal d3"><div class="en">403</div><div class="el">לייקים · פוסט קהילה מוביל</div></div>
+          <div class="eg reveal d4"><div class="en">346</div><div class="el">תגובות באותו פוסט</div></div>
+          <div class="eg reveal d5"><div class="en">270</div><div class="el">תגובות · פוסט קהילה נוסף</div></div>
+          <div class="eg reveal d6"><div class="en">0₪</div><div class="el">מדיה שהופעלה עד לרגע הזה</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="src reveal d7">מקור: צילומי מסך מקבוצת ״רעבים ברעבך״ בפייסבוק, אוגוסט 2026 — לפני עליית קמפיין המדיה.</p>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 4 · הפיבוט ============ -->
+<section class="slide forest" data-dot="הפיבוט">
+  <div class="frame-t"><span class="slidetag">03 · שינוי האסטרטגיה</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal" style="text-align:center;max-width:900px;margin-inline:auto">
+      <span class="eyebrow" style="justify-content:center">התובנה</span>
+      <h2>כשכבר קונים — לא צריך לשכנע.<br>צריך להתנצל.</h2>
+      <p style="margin-inline:auto">המכירות הגבוהות והשיח האורגני אמרו לנו שהשלב של ״למה לנסות״ כבר מאחורינו. אז זרקנו את הבריף המקורי וכתבנו מחדש את הקריאייטיב.</p>
+    </div>
+    <div class="pivot">
+      <div class="pcard was reveal d1">
+        <span class="pk">האסטרטגיה המקורית</span>
+        <h3>״הנה מוצר חדש — כדאי לכם לנסות״</h3>
+        <ul>
+          <li>מיצוב המוצר מול קטגוריה קיימת</li>
+          <li>הסבר על איכות, 100% חזה עוף</li>
+          <li>שכנוע לניסיון ראשון</li>
+          <li>טון: פונקציונלי, מוצרי</li>
+        </ul>
+      </div>
+      <div class="parrow reveal d2">←</div>
+      <div class="pcard now reveal d3">
+        <span class="pk">האסטרטגיה החדשה</span>
+        <h3>״סליחה שלקח לנו כל כך הרבה זמן״</h3>
+        <ul>
+          <li>הכרה בביקוש שכבר קיים בשטח</li>
+          <li>הומור עצמי במקום הצדקה עצמית</li>
+          <li>הפיכת האיחור לנכס מותגי</li>
+          <li>טון: אנושי, חצוף, שיחתי</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 5 · הקריאייטיב ============ -->
+<section class="slide sun" data-dot="הקריאייטיב">
+  <div class="frame-t"><span class="slidetag">04 · הקריאייטיב</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">קו הקריאייטיב</span>
+      <h2>התנצלות שהפכה לקמפיין</h2>
+      <p>שלושה נכסים, מסר אחד: עוף טוב מודים שאיחרו — ומשתמשים באיחור עצמו כדי לייצר חיבה, שיתוף ושיחה.</p>
+    </div>
+    <div class="gal">
+      <div class="reveal d1"><img data-a="cr_sorry" alt="סליחה שלקח לנו כל כך הרבה זמן"><div class="gcap">המסר המרכזי · ״סליחה שלקח לנו כל כך הרבה זמן״</div></div>
+      <div class="reveal d2"><img data-a="cr_timeline" alt="דברים שהומצאו לפני הנאגטס שלנו"><div class="gcap">הומור עצמי · ״דברים שהומצאו לפני הנאגטס שלנו״</div></div>
+      <div class="reveal d3"><img data-a="cr_late" alt="סליחה שהתעכבנו"><div class="gcap">גרסת סושיאל · ״סליחה שהתעכבנו״</div></div>
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 6 · הקריאייטיב באוויר ============ -->
+<section class="slide cream" data-dot="באוויר">
+  <div class="frame-t"><span class="slidetag">05 · הביצוע</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">מנכס בודד לשפה</span>
+      <h2>ההתנצלות רצה בכל נקודת מגע</h2>
+      <p>אותו מסר תורגם לבאנרים בפורטלים, למודעות חיפוש, לפוסטים בסושיאל — ואפילו לתיקי השליחים של וולט.</p>
+    </div>
+    <div class="mix">
+      <figure class="reveal d1" style="grid-column:span 7"><img data-a="banner" alt="באנר סליחה"><figcaption>באנר מותג · ״סליחה״</figcaption></figure>
+      <figure class="reveal d2" style="grid-column:span 5"><img data-a="google" alt="מודעת חיפוש בגוגל"><figcaption>גוגל סרץ' · CTR 9.15% · 415 נחיתות · ₪6.84 לנחיתה</figcaption></figure>
+      <figure class="reveal d3" style="grid-column:span 4"><img data-a="news1" alt="באנר בפורטל חדשות"><figcaption>N12 · מעברון וידאו</figcaption></figure>
+      <figure class="reveal d4" style="grid-column:span 4"><img data-a="news2" alt="באנר בפורטל ynet"><figcaption>ynet · באנר מובייל</figcaption></figure>
+      <figure class="reveal d5" style="grid-column:span 4"><img data-a="wolt" alt="תיקי שליחים של וולט"><figcaption>וולט · תיקי שליחים ממותגים</figcaption></figure>
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 7 · שלב א' ============ -->
+<section class="slide forest" data-dot="שלב א'">
+  <div class="frame-t"><span class="slidetag">06 · שלב א' — תוכן</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">שלב א' · יוצרי תוכן</span>
+      <h2>29 יוצרים בברטר. 8 משפיענים. מנוע אחד.</h2>
+      <p>שלב א' נועד להצית שיחה לפני שהמדיה עולה — ולתת לקריאייטיב החדש לרוץ קודם כל בפיד האורגני.</p>
+    </div>
+    <div class="kpis five">
+      <div class="kpi reveal d1"><div class="num">29</div><div class="lbl">יוצרי תוכן בברטר</div><div class="sup">תקציב ₪97,500</div></div>
+      <div class="kpi reveal d2"><div class="num">546,078</div><div class="lbl">צפיות אורגניות · ברטרים</div></div>
+      <div class="kpi reveal d3"><div class="num">2,749,500</div><div class="lbl">צפיות בקידום · 5 ברטרים שקודמו</div></div>
+      <div class="kpi reveal d4"><div class="num">8</div><div class="lbl">משפיענים מובילים</div><div class="sup">תקציב ₪208,500</div></div>
+      <div class="kpi reveal d5"><div class="num">1,250,970</div><div class="lbl">צפיות אורגניות · משפיענים</div></div>
+    </div>
+    <div class="strip reveal d6" style="margin-top:clamp(18px,2.4vw,30px)">
+      <img data-a="inf1" alt=""><img data-a="inf2" alt=""><img data-a="inf3" alt=""><img data-a="inf4" alt=""><img data-a="inf5" alt=""><img data-a="fry" alt="">
+    </div>
+    <p class="src reveal d7">סה״כ צפיות אורגניות בשלב א': <b>1,797,048</b> — ברטרים ומשפיענים יחד, ללא קידום ממומן.</p>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 8 · טבלת משפיענים ============ -->
+<section class="slide paper" data-dot="משפיענים">
+  <div class="frame-t"><span class="slidetag">07 · ביצועי משפיענים</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">שלב א' · ביצועים מול צפי</span>
+      <h2>ביצועים מול צפי צפיות — משפיענים</h2>
+      <p>ההשוואה היא בין <b>צפי הצפיות האורגניות</b> שנקבע בתוכנית העבודה לבין הצפיות האורגניות שנמדדו בפועל. עמודת הקידום מוצגת בנפרד — היא ממומנת מתקציב המדיה.</p>
+    </div>
+    <div class="tblwrap reveal d1">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th class="r">משפיען</th>
+            <th>תקציב</th>
+            <th>צפי צפיות<small>אורגני</small></th>
+            <th>בפועל<small>אורגני</small></th>
+            <th class="r">ביצוע מול צפי</th>
+            <th>פער</th>
+            <th>צפיות בקידום<small>ממומן</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">שיר צ׳יפ</td><td class="mut">₪20,000</td><td class="mut">150,000</td><td>217,495</td>
+              <td><span class="perf over"><span class="pv">145%</span><span class="pt"><span class="pf" style="--w:100%"></span></span></span></td><td style="color:var(--green-3);font-weight:700"><span class="ltr">+67,495</span></td><td class="mut">1,937,000</td></tr>
+          <tr><td class="name">סתיו כחלון</td><td class="mut">₪17,000</td><td class="mut">250,000</td><td>290,559</td>
+              <td><span class="perf over"><span class="pv">116%</span><span class="pt"><span class="pf" style="--w:80%"></span></span></span></td><td style="color:var(--green-3);font-weight:700"><span class="ltr">+40,559</span></td><td class="mut">2,000,000</td></tr>
+          <tr><td class="name">חמוצי</td><td class="mut">₪14,000</td><td class="mut">150,000</td><td>174,400</td>
+              <td><span class="perf over"><span class="pv">116%</span><span class="pt"><span class="pf" style="--w:80%"></span></span></span></td><td style="color:var(--green-3);font-weight:700"><span class="ltr">+24,400</span></td><td class="mut">1,234,000</td></tr>
+          <tr><td class="name">איתי בן שמחון</td><td class="mut">₪5,500</td><td class="mut">23,000</td><td>16,226</td>
+              <td><span class="perf near"><span class="pv">71%</span><span class="pt"><span class="pf" style="--w:49%"></span></span></span></td><td style="opacity:.7"><span class="ltr">−6,774</span></td><td class="mut">—</td></tr>
+          <tr><td class="name">זוהר גורמס</td><td class="mut">₪20,000</td><td class="mut">135,500</td><td>91,941</td>
+              <td><span class="perf near"><span class="pv">68%</span><span class="pt"><span class="pf" style="--w:47%"></span></span></span></td><td style="opacity:.7"><span class="ltr">−43,559</span></td><td class="mut">1,406,000</td></tr>
+          <tr><td class="name">יונג</td><td class="mut">₪18,000</td><td class="mut">460,000</td><td>254,585</td>
+              <td><span class="perf under"><span class="pv">55%</span><span class="pt"><span class="pf" style="--w:38%"></span></span></span></td><td style="opacity:.7"><span class="ltr">−205,415</span></td><td class="mut">2,595,000</td></tr>
+          <tr><td class="name">עידו בלאו</td><td class="mut">₪25,000</td><td class="mut">140,000</td><td>71,240</td>
+              <td><span class="perf under"><span class="pv">51%</span><span class="pt"><span class="pf" style="--w:35%"></span></span></span></td><td style="opacity:.7"><span class="ltr">−68,760</span></td><td class="mut">1,385,000</td></tr>
+          <tr><td class="name">נועם פירוז</td><td class="mut">₪22,000</td><td class="mut">300,000</td><td>134,524</td>
+              <td><span class="perf under"><span class="pv">45%</span><span class="pt"><span class="pf" style="--w:31%"></span></span></span></td><td style="opacity:.7"><span class="ltr">−165,476</span></td><td class="mut">644,500</td></tr>
+          <tr class="tot"><td class="name">סה״כ</td><td>₪141,500</td><td>1,608,500</td><td>1,250,970</td>
+              <td><span class="perf near"><span class="pv">78%</span><span class="pt"><span class="pf" style="--w:54%"></span></span></span></td><td><span class="ltr">−357,530</span></td><td>11,201,500</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src reveal d2">3 מתוך 8 המשפיענים עברו את צפי הצפיות האורגני; הפער הכולל נסגר בקידום הממומן, שהניב 11.2 מיליון חשיפות. עמודת ״צפי צפיות״ מתוך גיליון ״שלב א״ בתוכנית העבודה; ״בפועל״ מתוך דוח סיכום הקמפיין. איתי בן שמחון פעל בפעימה אחת ללא קידום ממומן.</p>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 9 · קהילה ואנגייג'מנט ============ -->
+<section class="slide sun" data-dot="קהילה">
+  <div class="frame-t"><span class="slidetag">08 · אפקט הקהילה</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">שלב א' · מעורבות</span>
+      <h2>לא רק צפו — הגיבו, שמרו ושיתפו</h2>
+      <p>ההתנצלות ייצרה תגובה רגשית, לא רק חשיפה. מדד השמירות והשיתופים הוא העדות הכי חזקה לכך שהמסר נגע.</p>
+    </div>
+    <div class="two wide">
+      <div>
+        <div class="kpis" style="grid-template-columns:repeat(2,1fr)">
+          <div class="kpi reveal d1"><div class="num">13,818</div><div class="lbl">לייקים</div></div>
+          <div class="kpi reveal d2"><div class="num">11,883</div><div class="lbl">שיתופים</div></div>
+          <div class="kpi reveal d3"><div class="num">9,996</div><div class="lbl">שמירות</div></div>
+          <div class="kpi reveal d4"><div class="num">2,995</div><div class="lbl">תגובות</div></div>
+        </div>
+        <div class="quote reveal d5" style="margin-top:18px">שיעור השיתופים הגבוה במיוחד — <b>11,883 שיתופים</b> מול 13,818 לייקים — מלמד שהתוכן לא רק מצא חן, אלא הועבר הלאה.</div>
+      </div>
+      <div class="stack">
+        <div class="blk reveal d3"><h4>פעילות ״רעבים ברעבך״</h4><p>שיתוף פעולה ממומן עם קהילת האוכל שבה נולד הביקוש האורגני — תקציב ₪20,000, צפי 200,000 חשיפות.</p></div>
+        <div class="reveal d4" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><img data-a="inf6" alt="יוצר תוכן טועם נאגטס" style="width:100%;height:clamp(130px,22vh,200px);object-fit:cover;object-position:center 30%;border-radius:14px;box-shadow:0 12px 30px rgba(5,74,29,.2)"><img data-a="woltinf" alt="תיק שליחים ממותג של וולט" style="width:100%;height:clamp(130px,22vh,200px);object-fit:cover;object-position:center 62%;border-radius:14px;box-shadow:0 12px 30px rgba(5,74,29,.2)"></div>
+      </div>
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 10 · שלב ב' מדיה ============ -->
+<section class="slide forest" data-dot="שלב ב'">
+  <div class="frame-t"><span class="slidetag">09 · שלב ב' — מדיה</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">שלב ב' · מדיה</span>
+      <h2>הקמפיין עלה לאוויר — ומסר מעל התחזית</h2>
+      <p>עם קריאייטיב מדויק, אותו תקציב מדיה קנה יותר. החשיפות בפועל עברו את התחזית שהוגדרה בתוכנית ב־29%.</p>
+    </div>
+    <div class="kpis five">
+      <div class="kpi reveal d1"><div class="num">33,155,279</div><div class="lbl">חשיפות בפועל</div><div class="sup">מול צפי 25,748,303</div></div>
+      <div class="kpi reveal d2"><div class="num"><span class="ltr">+29%</span></div><div class="lbl">עודף מסירה מול התחזית</div></div>
+      <div class="kpi reveal d3"><div class="num">11,361,593</div><div class="lbl">יוניקים · סכום פלטפורמות</div></div>
+      <div class="kpi reveal d4"><div class="num">5,644,550</div><div class="lbl">צפיות מלאות בווידאו</div></div>
+      <div class="kpi reveal d5"><div class="num">₪12.50</div><div class="lbl">CPM ממוצע · עלות ל־1,000 חשיפות</div></div>
+    </div>
+    <div class="two" style="margin-top:clamp(18px,2.4vw,28px)">
+      <div class="quote reveal d6">תקציב ברוטו <b>₪450,000</b> · תקציב מדיה נטו <b>₪414,468</b> · תקציב שלא נוצל <b>₪2,446</b> — ניצול כמעט מלא של התוכנית.</div>
+      <div class="blk reveal d7"><h4>עלות לצפייה מלאה</h4><div class="kn">₪0.073</div><p style="margin-top:8px">כל צפייה מלאה בסרטון עלתה פחות מ־8 אגורות.</p></div>
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 11 · פילוח מדיה ============ -->
+<section class="slide cream" data-dot="פילוח מדיה">
+  <div class="frame-t"><span class="slidetag">10 · פילוח מדיה</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">שלב ב' · לפי פלטפורמה</span>
+      <h2>איפה רץ התקציב ומה הוא הביא</h2>
+    </div>
+    <div class="tblwrap reveal d1">
+      <table class="tbl">
+        <thead>
+          <tr><th class="r">פלטפורמה</th><th class="r">כלים</th><th>תקציב מדיה</th><th>יוניקים</th><th>חשיפות בפועל</th><th>CPM</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">TikTok</td><td class="mut" style="text-align:right">וידאו 15+6 · סרטוני מיטל · קידום משפיענים</td><td>₪41,098</td><td>3,082,164</td><td>12,115,187</td><td>₪3.39</td></tr>
+          <tr><td class="name">פורטלים ורשתות</td><td class="mut" style="text-align:right">In-Stream · באנרים ומעברונים · מובייל</td><td>₪124,872</td><td>2,224,156</td><td>8,246,810</td><td>₪15.14</td></tr>
+          <tr><td class="name">YouTube</td><td class="mut" style="text-align:right">TrueView · Non-skippable · CTV · Bumper</td><td>₪102,168</td><td>3,506,373</td><td>6,491,420</td><td>₪15.74</td></tr>
+          <tr><td class="name">Meta</td><td class="mut" style="text-align:right">פוסט וידאו · סרטוני מיטל · טראפיק · קידום משפיענים</td><td>₪58,353</td><td>2,168,003</td><td>5,213,663</td><td>₪11.19</td></tr>
+          <tr><td class="name">KWay</td><td class="mut" style="text-align:right">Live 30״</td><td>₪47,300</td><td>142,553</td><td>604,424</td><td>₪78.26</td></tr>
+          <tr><td class="name">רשת</td><td class="mut" style="text-align:right">Live 30״</td><td>₪37,840</td><td>238,344</td><td>479,478</td><td>₪78.92</td></tr>
+          <tr><td class="name">Google Search</td><td class="mut" style="text-align:right">מודעות חיפוש מוצר · CTR 9.15%</td><td>₪2,838</td><td>—</td><td>4,297</td><td>₪6.84 לנחיתה</td></tr>
+          <tr class="tot"><td class="name">סה״כ</td><td></td><td>₪414,468</td><td>11,361,593</td><td>33,155,279</td><td>₪12.50</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src reveal d2">CPM מחושב כתקציב המדיה חלקי החשיפות בפועל. שורות ה־Live (KWay, רשת) הן מוצרי חסות בעלות גבוהה לחשיפה מטבעם. קידום המשפיענים בסך ₪34,213 כלול בשורות Meta ו־TikTok.</p>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 12 · סיכום מספרים ============ -->
+<section class="slide forest" data-dot="סיכום">
+  <div class="frame-t"><span class="slidetag">11 · התמונה המלאה</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">שני השלבים יחד</span>
+      <h2>37.7 מיליון חשיפות וצפיות</h2>
+      <p>ללא כפל־ספירה: קידום המשפיענים ממומן מתקציב המדיה ולכן נספר פעם אחת בלבד, בתוך חשיפות המדיה.</p>
+    </div>
+    <div class="kpis">
+      <div class="kpi reveal d1"><div class="num">33,155,279</div><div class="lbl">חשיפות מדיה · שלב ב'</div></div>
+      <div class="kpi reveal d2"><div class="num">2,749,500</div><div class="lbl">צפיות בקידום ברטרים · שלב א'</div></div>
+      <div class="kpi reveal d3"><div class="num">1,797,048</div><div class="lbl">צפיות אורגניות · ברטרים ומשפיענים</div></div>
+      <div class="kpi reveal d4"><div class="num">37,701,827</div><div class="lbl">סה״כ חשיפות וצפיות</div></div>
+    </div>
+    <div class="two" style="margin-top:clamp(18px,2.4vw,28px)">
+      <div class="stack">
+        <div class="blk reveal d5"><h4>יעילות כוללת</h4><p>₪745,300 תקציב מהלך מלא מול 37.7 מיליון חשיפות וצפיות — <b>כ־₪19.8 לכל 1,000 חשיפות</b>, כולל הפקה, ברטרים ומשפיענים.</p></div>
+        <div class="blk reveal d6"><h4>מעורבות</h4><p>38,692 אינטראקציות בשלב התוכן — לייקים, שיתופים, שמירות ותגובות.</p></div>
+      </div>
+      <div class="quote reveal d7">הנתון החשוב ביותר אינו החשיפות אלא <b>יחס השיתופים</b>: 11,883 שיתופים על 1.8 מיליון צפיות אורגניות. תוכן שמתנצל — משתפים.</div>
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 13 · מסקנות ============ -->
+<section class="slide paper" data-dot="מסקנות">
+  <div class="frame-t"><span class="slidetag">12 · מסקנות</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">מה למדנו</span>
+      <h2>ארבע מסקנות להמשך</h2>
+    </div>
+    <div class="cards">
+      <div class="card hot reveal d1"><div class="idx">1</div><div><span class="h">להקשיב לשטח לפני שעולים לאוויר</span><p>הסיגנל שהציל את הקמפיין הגיע מקבוצת פייסבוק, לא ממחקר. מדידת שיח אורגני לפני עלייה צריכה להיות שלב קבוע בכל השקה.</p></div></div>
+      <div class="card reveal d2"><div class="idx">2</div><div><span class="h">כשהביקוש קיים — ענווה עובדת טוב משכנוע</span><p>״סליחה שלקח לנו כל כך הרבה זמן״ הפך חולשה מותגית לנכס. יחס השיתופים החריג (11,883) הוא ההוכחה.</p></div></div>
+      <div class="card reveal d3"><div class="idx">3</div><div><span class="h">קריאייטיב מדויק מוזיל מדיה</span><p>אותו תקציב מסר 29% יותר חשיפות מהתחזית ו־CPM של ₪12.50. TikTok הוביל ביעילות עם ₪3.39 ל־1,000 חשיפות.</p></div></div>
+      <div class="card reveal d4"><div class="idx">4</div><div><span class="h">לתמחר משפיענים לפי ביצוע, לא לפי גודל</span><p>רק 3 מ־8 המשפיענים עמדו בצפי האורגני, וההוצאה הגדולה ביותר (₪25,000) הניבה 51% מהצפי. בהמשך — מודל תגמול משולב מבוסס ביצועים.</p></div></div>
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 14 · סגירה ============ -->
+<section class="slide sun" id="close" data-dot="תודה">
+  <div class="frame-t"><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap" style="text-align:center">
+    <h2 class="reveal">תודה!</h2>
+    <p class="sub reveal d1">זה יום טוב לעוף טוב.</p>
+    <div class="closerow">
+      <div class="reveal d2"><div class="n">37.7M</div><div class="l">חשיפות וצפיות</div></div>
+      <div class="reveal d3"><div class="n">5.6M</div><div class="l">צפיות מלאות</div></div>
+      <div class="reveal d4"><div class="n">38,692</div><div class="l">אינטראקציות</div></div>
+      <div class="reveal d5"><div class="n"><span class="ltr">+29%</span></div><div class="l">מעל התחזית</div></div>
+    </div>
+    <div class="signoff reveal d6">הוכן על ידי <b>42creative</b> · עבור <b>עוף טוב</b> · ספטמבר 2026</div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+</div>
+
+<script src="assets.js"></script>
+<script>
+(function(){
+  // inject images
+  document.querySelectorAll('[data-a]').forEach(function(el){
+    var k=el.getAttribute('data-a');
+    if(A[k]) el.src=A[k];
+  });
+  document.querySelectorAll('[data-logo]').forEach(function(el){
+    var dark=el.closest('.slide') && el.closest('.slide').classList.contains('forest');
+    el.src = dark ? A.logo42_cream : A.logo42_green;
+  });
+
+  var deck=document.getElementById('deck');
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var bar=document.getElementById('bar');
+  var dotsWrap=document.getElementById('dots');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label',s.dataset.dot||('שקופית '+(i+1)));
+    b.addEventListener('click',function(){ s.scrollIntoView({behavior:reduce?'auto':'smooth'}); });
+    dotsWrap.appendChild(b);
+  });
+  var dots=[].slice.call(dotsWrap.children);
+
+  deck.addEventListener('scroll',function(){
+    var max=deck.scrollHeight-deck.clientHeight;
+    bar.style.width=(max>0?(deck.scrollTop/max*100):0)+'%';
+  },{passive:true});
+
+  function activate(s){
+    s.classList.add('in');
+    s.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    s.querySelectorAll('.num[data-to]').forEach(countUp);
+  }
+  var ticking=false;
+  function sync(){
+    ticking=false;
+    var mid=deck.clientHeight/2, cur=0, best=1e9;
+    slides.forEach(function(s,i){
+      var r=s.getBoundingClientRect();
+      if(r.bottom>0 && r.top<deck.clientHeight+120) activate(s);
+      var dist=Math.abs(r.top+Math.min(r.height,deck.clientHeight)/2-mid);
+      if(dist<best){ best=dist; cur=i; }
+    });
+    var isDark=slides[cur].classList.contains('forest');
+    dots.forEach(function(d,i){ d.classList.toggle('on',i===cur); d.classList.toggle('light',isDark); });
+  }
+  deck.addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(sync); } },{passive:true});
+  window.addEventListener('resize',sync);
+  sync();
+  setTimeout(sync,150);
+
+  window.addEventListener('keydown',function(ev){
+    var cur=0,best=1e9;
+    slides.forEach(function(s,i){ var d=Math.abs(s.getBoundingClientRect().top); if(d<best){best=d;cur=i;} });
+    if(ev.key==='ArrowDown'||ev.key==='PageDown'||ev.key===' '||ev.key==='ArrowLeft'){ ev.preventDefault(); if(cur<slides.length-1) slides[cur+1].scrollIntoView({behavior:reduce?'auto':'smooth'}); }
+    if(ev.key==='ArrowUp'||ev.key==='PageUp'||ev.key==='ArrowRight'){ ev.preventDefault(); if(cur>0) slides[cur-1].scrollIntoView({behavior:reduce?'auto':'smooth'}); }
+  });
+
+  function countUp(el){
+    if(el.dataset.done) return; el.dataset.done='1';
+    var to=parseFloat(el.dataset.to), pre=el.dataset.pre||'', suf=el.dataset.suf||'';
+    if(reduce){ el.textContent=pre+Math.round(to).toLocaleString('en-US')+suf; return; }
+    var dur=1000,t0=null;
+    function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3);
+      el.textContent=pre+Math.round(to*e).toLocaleString('en-US')+suf;
+      if(p<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+})();
+</script>
+</body>
+</html>
