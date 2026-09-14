@@ -192,6 +192,7 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
 
 /* ================= CONCLUSIONS ================= */
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cards.three{grid-template-columns:repeat(3,1fr)}
 .card{border-radius:16px;padding:19px 22px;display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);box-shadow:0 8px 28px rgba(5,74,29,.06)}
 .card .idx{font-family:'Rubik';font-weight:800;font-size:18px;min-width:40px;height:40px;border-radius:11px;
   display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--green);color:var(--yellow)}
@@ -275,15 +276,15 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
     <div class="two">
       <div class="stack">
         <div class="blk reveal d1"><h4>המשימה</h4><p>להשיק את נאגטס עוף טוב, לבנות מודעות רחבה ולהניע ניסיון ראשון בקרב משפחות וצעירים.</p></div>
-        <div class="blk reveal d2"><h4>הכיוון הראשוני</h4><p>קמפיין השקה בשני שלבים — שלב א' תוכן ויוצרים ליצירת באזז, שלב ב' מדיה רחבה לבניית מודעות. המסר: <b>הנה הנאגטס החדשים של עוף טוב</b>.</p></div>
-        <div class="blk reveal d3"><h4>המבנה</h4><p>29 יוצרי תוכן בברטר · 8 משפיענים מובילים · פעילות קהילה · ואחריהם קמפיין מדיה חוצה־פלטפורמות בתקציב ₪450,000.</p></div>
+        <div class="blk reveal d2"><h4>הכיוון הראשוני</h4><p>קמפיין השקה עם המסר <b>״בואו לאכול נאגטס בבית״</b>.</p></div>
+        <div class="blk reveal d3"><h4>המבנה</h4><p>סרטון עם השקעה תקציבית יחסית גדולה, משפיענים שיציגו את המוצר, מדיה.</p></div>
       </div>
       <div class="stack">
         <div class="kpis" style="grid-template-columns:1fr 1fr">
-          <div class="kpi reveal d3"><div class="num">₪745,300</div><div class="lbl">תקציב כולל למהלך</div></div>
-          <div class="kpi reveal d4"><div class="num">3</div><div class="lbl">חודשי פעילות</div></div>
-          <div class="kpi reveal d5"><div class="num">37</div><div class="lbl">יוצרים ומשפיענים</div></div>
-          <div class="kpi reveal d6"><div class="num">7</div><div class="lbl">פלטפורמות מדיה</div></div>
+          <div class="kpi reveal d3"><div class="num">₪750,000</div><div class="lbl">תקציב כולל למהלך</div></div>
+          <div class="kpi reveal d4"><div class="num">2</div><div class="lbl">חודשי פעילות</div></div>
+          
+          
         </div>
         <div class="quote reveal d7">ואז, עוד לפני שהקמפיין עלה לאוויר, המכירות בשטח אמרו משהו אחר.</div>
       </div>
@@ -308,7 +309,7 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
         <div class="blk reveal d3"><h4>השאלה החדשה</h4><p>איך מדברים על מוצר שכבר מבוקש, בלי למכור אותו מחדש — ואיך הופכים את זה ליתרון קריאייטיבי.</p></div>
       </div>
       <div class="stack">
-        <img class="reveal d4" data-a="fry" alt="נאגטס עוף טוב בטיגון" style="width:100%;height:clamp(180px,30vh,290px);object-fit:cover;object-position:center;border-radius:16px;box-shadow:0 16px 40px rgba(5,74,29,.18)">
+        <img class="reveal d4" data-a="pack" alt="אריזת נאגטס עוף טוב" style="width:100%;height:clamp(180px,30vh,290px);object-fit:contain;filter:drop-shadow(0 18px 34px rgba(5,74,29,.24))">
         <div class="quote reveal d5">אז שינינו כיוון — עוד לפני שהקמפיין עלה.</div>
       </div>
     </div>
@@ -323,17 +324,17 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
     <div class="shead reveal" style="text-align:center;max-width:920px;margin-inline:auto">
       <span class="eyebrow" style="justify-content:center">התובנה</span>
       <h2>כשכבר קונים — לא צריך לשכנע.<br>צריך להתנצל.</h2>
-      <p style="margin-inline:auto">אם המוצר כבר נמכר, הקמפיין לא צריך להסביר אותו. הוא צריך להכיר בכך שנאגטס ביתי היו אמורים להגיע מזמן — התנצלות קטגורית, לא התנצלות מול מתחרים.</p>
+      <p style="margin-inline:auto">אם המוצר כבר נמכר, הקמפיין לא צריך להסביר אותו. הוא צריך להכיר בכך שנאגטס ביתי היו אמורים להגיע מזמן.</p>
     </div>
     <div class="pivot">
       <div class="pcard was reveal d1">
         <span class="pk">הכיוון הראשוני</span>
-        <h3>״הנה מוצר חדש — כדאי לכם לנסות״</h3>
+        <h3>״תתרגלו לאכול גם נאגטס בבית ולא רק בחוץ״</h3>
         <ul>
           <li>הצגת המוצר החדש ותכונותיו</li>
-          <li>הסבר על איכות, 100% חזה עוף</li>
+          <li>חינוך השוק להכנת נאגטס ביתי ולא רק כזה שהגיע עם שליח</li>
           <li>שכנוע לניסיון ראשון</li>
-          <li>טון: פונקציונלי, מוצרי</li>
+          <li>טון מוצרי אך קליל</li>
         </ul>
       </div>
       <div class="parrow reveal d2">←</div>
@@ -342,8 +343,7 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
         <h3>״סליחה שלקח לנו כל כך הרבה זמן״</h3>
         <ul>
           <li>הכרה בכך שהמוצר היה אמור להגיע מזמן</li>
-          <li>הומור עצמי במקום הצדקה עצמית</li>
-          <li>התנצלות קטגורית — לא מול מתחרים</li>
+          <li>הומור עצמי</li>
           <li>טון: אנושי, חצוף, שיחתי</li>
         </ul>
       </div>
@@ -359,7 +359,7 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
     <div class="shead reveal">
       <span class="eyebrow">קו הקריאייטיב</span>
       <h2>התנצלות שהפכה לקמפיין</h2>
-      <p>שלושה נכסים, מסר אחד: ההודאה שנאגטס ביתי היו אמורים להגיע מזמן — והפיכת ההמתנה עצמה לסיפור.</p>
+      <p>ההודאה שעוף טוב היו צריכים לייצר נאגטס מזמן - והפיכת ההתנצלות לסיפור המרכזי.</p>
     </div>
     <div class="gal">
       <div class="reveal d1"><img data-a="cr_sorry" alt="סליחה שלקח לנו כל כך הרבה זמן"><div class="gcap">המסר המרכזי · ״סליחה שלקח לנו כל כך הרבה זמן״</div></div>
@@ -376,14 +376,14 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
     <div class="shead reveal">
       <span class="eyebrow">מנכס בודד לשפה</span>
       <h2>ההתנצלות רצה בכל נקודת מגע</h2>
-      <p>אותו מסר תורגם לבאנרים בפורטלים, למודעות חיפוש, לפוסטים בסושיאל — ואפילו לתיקי השליחים של וולט.</p>
+      <p>אותו מסר תורגם לבאנרים באתרים, לדף נחיתה, לפוסטים בסושיאל ולהתנצלות אישית ברחוב :)</p>
     </div>
     <div class="mix">
       <figure class="reveal d1" style="grid-column:span 7"><img data-a="banner" alt="באנר סליחה"><figcaption>באנר מותג · ״סליחה״</figcaption></figure>
       <figure class="reveal d2" style="grid-column:span 5"><img data-a="google" alt="מודעת חיפוש בגוגל"><figcaption>גוגל סרץ' · CTR 9.15% · 415 נחיתות · ₪6.84 לנחיתה</figcaption></figure>
       <figure class="reveal d3" style="grid-column:span 4"><img data-a="news1" alt="באנר בפורטל חדשות"><figcaption>N12 · מעברון וידאו</figcaption></figure>
       <figure class="reveal d4" style="grid-column:span 4"><img data-a="news2" alt="באנר בפורטל ynet"><figcaption>ynet · באנר מובייל</figcaption></figure>
-      <figure class="reveal d5" style="grid-column:span 4"><img data-a="wolt" alt="תיקי שליחים של וולט"><figcaption>וולט · תיקי שליחים ממותגים</figcaption></figure>
+      <figure class="reveal d5" style="grid-column:span 4"><img data-a="wolt" alt="התנצלות אישית ברחוב"><figcaption>מיטל · התנצלות אישית ברחוב</figcaption></figure>
     </div>
   </div>
   <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
@@ -399,7 +399,7 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
       <p>שלב א' רץ לפני עליית המדיה, עם הקריאייטיב החדש בפיד האורגני של יוצרי התוכן והמשפיענים.</p>
     </div>
     <div class="kpis five">
-      <div class="kpi reveal d1"><div class="num">29</div><div class="lbl">יוצרי תוכן בברטר</div><div class="sup">תקציב ₪97,500</div></div>
+      <div class="kpi reveal d1"><div class="num">29</div><div class="lbl">יוצרי תוכן בברטר</div><div class="sup">תקציב ₪75,000</div></div>
       <div class="kpi reveal d2"><div class="num">546,078</div><div class="lbl">צפיות אורגניות · ברטרים</div></div>
       <div class="kpi reveal d3"><div class="num">2,749,500</div><div class="lbl">צפיות בקידום · 5 ברטרים שקודמו</div></div>
       <div class="kpi reveal d4"><div class="num">8</div><div class="lbl">משפיענים מובילים</div><div class="sup">תקציב ₪208,500</div></div>
@@ -500,7 +500,7 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
   <div class="wrap">
     <div class="shead reveal">
       <span class="eyebrow">שלב ב' · מדיה</span>
-      <h2>שלב ב': מסירה מעל התחזית</h2>
+      <h2>הרבה יותר חשיפות מהמתוכנן</h2>
       <p>החשיפות בפועל עברו את התחזית שהוגדרה בתוכנית המדיה ב־29%, בניצול כמעט מלא של התקציב.</p>
     </div>
     <div class="kpis five">
@@ -581,14 +581,14 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
   <div class="wrap">
     <div class="shead reveal">
       <span class="eyebrow">ביצועי מדיה</span>
-      <h2>ארבע מסקנות מהנתונים</h2>
-      <p>המסקנות שלהלן נגזרות ישירות ממספרי המדיה והמשפיענים. מסקנות אסטרטגיות ותובנות קריאייטיב — להשלמה מול הלקוח.</p>
+      <h2>שלוש מסקנות מהנתונים</h2>
+      <p>המסקנות שלהלן נגזרות ישירות ממספרי תוכנית המדיה. מסקנות אסטרטגיות ותובנות קריאייטיב — להשלמה מול הלקוח.</p>
     </div>
-    <div class="cards">
+    <div class="cards three">
       <div class="card hot reveal d1"><div class="idx">1</div><div><span class="h">עודף מסירה של 29% מול התחזית</span><p>33,155,279 חשיפות בפועל מול צפי של 25,748,303, בניצול כמעט מלא של התקציב (₪2,446 לא נוצלו). CPM ממוצע ₪12.50.</p></div></div>
       <div class="card reveal d2"><div class="idx">2</div><div><span class="h">TikTok הפלטפורמה היעילה ביותר בפער</span><p>₪41,098 — כ־10% מתקציב המדיה — הניבו 12,115,187 חשיפות. CPM של ₪3.39, פי 3.7 טוב מהממוצע.</p></div></div>
       <div class="card reveal d3"><div class="idx">3</div><div><span class="h">מוצרי ה־Live יקרים לחשיפה</span><p>KWay ורשת יחד ₪85,140 — 21% מתקציב המדיה — מול 1,083,902 חשיפות בלבד, CPM של כ־₪78. שווה בחינה מחדש של המשקל שלהם בתמהיל.</p></div></div>
-      <div class="card reveal d4"><div class="idx">4</div><div><span class="h">ביצועי המשפיענים לא התאימו לתמחור</span><p>3 מתוך 8 עמדו בצפי האורגני. ההוצאה הגבוהה ביותר (₪25,000) הניבה 51% מהצפי, בעוד ₪14,000 הניבו 116%. מודל תגמול מבוסס ביצועים יסגור את הפער.</p></div></div>
+      
     </div>
   </div>
   <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
