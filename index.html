@@ -291,6 +291,30 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
 .scard .msg{font-family:'Rubik';font-weight:800;font-size:clamp(18px,2vw,26px);line-height:1.25;
   color:var(--yellow);opacity:1;margin-bottom:12px}
 @media(max-width:900px){.startgrid{grid-template-columns:1fr}}
+/* ================= VIDEO CARDS ================= */
+.vidgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px)}
+.vidgrid.two{grid-template-columns:repeat(2,1fr);gap:clamp(14px,2vw,22px)}
+.vcard{border-radius:16px;overflow:hidden;border:1px solid rgba(255,247,228,.16);background:#0b1f12}
+.sun .vcard{border-color:rgba(5,74,29,.2);background:#0b1f12;box-shadow:0 14px 36px rgba(5,74,29,.22)}
+.vframe{position:relative;width:100%;background:#000;cursor:pointer;overflow:hidden;display:block}
+.vframe.wide{aspect-ratio:16/9}
+.vframe.tall{aspect-ratio:9/16}
+.vframe img{width:100%;height:100%;object-fit:cover;display:block}
+.vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.vplay i{width:clamp(46px,4.6vw,66px);height:clamp(46px,4.6vw,66px);border-radius:50%;background:rgba(254,194,61,.95);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .2s}
+.vframe:hover .vplay i{transform:scale(1.09)}
+.vplay i::after{content:"";width:0;height:0;border-left:17px solid var(--green);
+  border-top:11px solid transparent;border-bottom:11px solid transparent;transform:translateX(3px)}
+.vmeta{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:12px 16px;
+  background:rgba(255,247,228,.07);color:var(--cream)}
+.vmeta .vlen{font-family:'Rubik';font-weight:800;font-size:clamp(17px,1.9vw,25px);color:var(--yellow);line-height:1}
+.vmeta .vlbl{font-size:12.5px;opacity:.75;text-align:left}
+.vid-two{display:grid;grid-template-columns:1fr .82fr;gap:clamp(24px,4vw,56px);align-items:center}
+.vid-two .shead{margin-bottom:0}
+.vlocal{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#000;border-radius:0}
+@media(max-width:900px){.vidgrid,.vidgrid.two{grid-template-columns:1fr}.vid-two{grid-template-columns:1fr;gap:24px}}
 /* ================= RESPONSIVE ================= */
 @media(max-width:1000px){
   .kpis,.kpis.five{grid-template-columns:repeat(2,1fr)}
@@ -542,6 +566,65 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
       <figure class="reveal d3" style="grid-column:span 4"><img data-a="news1" alt="באנר בפורטל חדשות"><figcaption>N12 · מעברון וידאו</figcaption></figure>
       <figure class="reveal d4" style="grid-column:span 4"><img data-a="news2" alt="באנר בפורטל ynet"><figcaption>ynet · באנר מובייל</figcaption></figure>
       <figure class="reveal d5" style="grid-column:span 4"><img data-a="wolt" alt="התנצלות אישית ברחוב"><figcaption>מיטל · התנצלות אישית ברחוב</figcaption></figure>
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ סרטוני הקמפיין ============ -->
+<section class="slide forest" data-dot="סרטוני הקמפיין">
+  <div class="frame-t"><span class="slidetag">09 · סרטוני הקמפיין</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">נכסי וידאו</span>
+      <h2>שלושה אורכים, מסר אחד</h2>
+      <p>סרטון הקמפיין הופק בשלושה אורכים לפי הפלטפורמה ומודל הרכישה. לחצו על סרטון כדי להפעיל.</p>
+    </div>
+    <div class="vidgrid">
+      <div class="vcard reveal d1">
+        <div class="vframe wide" data-vid="1qqXEj8-vpWr2tSqUDpkfRux_w2xFa3si">
+          <img data-a="vid30" alt="סרטון הקמפיין באורך 30 שניות">
+          <span class="vplay"><i></i></span>
+        </div>
+        <div class="vmeta"><span class="vlen">30″</span><span class="vlbl">סרטון מלא · YouTube, CTV, פורטלים</span></div>
+      </div>
+      <div class="vcard reveal d2">
+        <div class="vframe wide" data-vid="1NNqjyY4AGRNmU80gV87pZ6KhNkYN5Wkr">
+          <img data-a="vid15" alt="סרטון הקמפיין באורך 15 שניות">
+          <span class="vplay"><i></i></span>
+        </div>
+        <div class="vmeta"><span class="vlen">15″</span><span class="vlbl">Non-skippable · סושיאל</span></div>
+      </div>
+      <div class="vcard reveal d3">
+        <div class="vframe wide" data-vid="1LAycvaNGPk1O-Kn4GQD-bJZUTXRDsG9Z">
+          <img data-a="vid06" alt="סרטון הקמפיין באורך 6 שניות">
+          <span class="vplay"><i></i></span>
+        </div>
+        <div class="vmeta"><span class="vlen">6″</span><span class="vlbl">Bumper · YouTube</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ סרטוני מיטל ============ -->
+<section class="slide sun" data-dot="סרטוני מיטל">
+  <div class="frame-t"><span class="slidetag">10 · סרטוני מיטל</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="vid-two">
+      <div class="shead reveal">
+        <span class="eyebrow">אקטיבציה ברחוב</span>
+        <h2>דוכן הסליחה של מיטל</h2>
+        <p>שני סרטונים מ״דוכן סליחה רשמי — נאגטס עוף טוב״: אינטראקציה מחוץ למסך, שבאה לידי ביטוי אחר כך גם במסך בסושיאל. לחצו כדי להפעיל.</p>
+      </div>
+      <div class="vidgrid two">
+        <div class="vcard reveal d1">
+          <video class="vlocal" controls preload="metadata" playsinline data-poster="mtl1" src="meital-1.mp4"></video>
+        </div>
+        <div class="vcard reveal d2">
+          <video class="vlocal" controls preload="metadata" playsinline data-poster="mtl2" src="meital-2.mp4"></video>
+        </div>
+      </div>
     </div>
   </div>
   <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
@@ -847,6 +930,22 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
     el.src = dark ? A.logo42_cream : A.logo42_green;
   });
 
+  document.querySelectorAll('video[data-poster]').forEach(function(v){
+    var k=v.getAttribute('data-poster');
+    if(A[k]) v.poster=A[k];
+  });
+  document.querySelectorAll('.vframe[data-vid]').forEach(function(el){
+    el.addEventListener('click',function(){
+      if(el.dataset.loaded) return;
+      el.dataset.loaded='1';
+      var f=document.createElement('iframe');
+      f.src='https://drive.google.com/file/d/'+el.dataset.vid+'/preview';
+      f.setAttribute('allow','autoplay; fullscreen');
+      f.setAttribute('allowfullscreen','');
+      el.appendChild(f);
+      var p=el.querySelector('.vplay'); if(p){ p.remove(); }
+    });
+  });
   var deck=document.getElementById('deck');
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var bar=document.getElementById('bar');
