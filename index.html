@@ -210,6 +210,68 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
 .signoff{margin-top:46px;font-family:'Rubik';font-size:13px;letter-spacing:.04em;opacity:.72}
 .signoff b{font-weight:700;opacity:1}
 
+/* ================= BUDGET PIE ================= */
+.pie-wrap{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.pie{width:clamp(200px,26vw,300px);height:clamp(200px,26vw,300px);flex-shrink:0;transform:rotate(-90deg)}
+.pie circle{fill:none;stroke-width:18;stroke-dasharray:0 1000;transition:stroke-dasharray 1.1s cubic-bezier(.2,.7,.2,1)}
+.in .pie circle{stroke-dasharray:var(--d)}
+.pie-hole{font-family:'Rubik';text-anchor:middle}
+.pie-total{display:flex;flex-direction:column;align-items:center;justify-content:center;position:absolute;inset:0;pointer-events:none}
+.pie-total .pt-n{font-family:'Rubik';font-weight:800;font-size:clamp(20px,2.3vw,30px);line-height:1}
+.pie-total .pt-l{font-size:12px;opacity:.7;margin-top:4px}
+.pie-box{position:relative;display:inline-flex}
+.legend{display:flex;flex-direction:column;gap:9px}
+.lrow{display:grid;grid-template-columns:14px 1fr auto auto;align-items:center;gap:12px;
+  padding:9px 14px;border-radius:11px;background:rgba(255,255,255,.55);border:1px solid rgba(5,74,29,.12)}
+.forest .lrow{background:rgba(255,247,228,.06);border-color:rgba(255,247,228,.14)}
+.lrow i{width:14px;height:14px;border-radius:4px;display:block}
+.lrow .ln{font-size:14.5px;font-weight:600}
+.lrow .lv{font-family:'Rubik';font-weight:600;font-size:14px;opacity:.75;white-space:nowrap}
+.lrow .lp{font-family:'Rubik';font-weight:800;font-size:16px;min-width:56px;text-align:left}
+@media(max-width:900px){.pie-wrap{grid-template-columns:1fr;justify-items:center}}
+
+/* ================= PLAN VS ACTUAL ================= */
+.pva{display:flex;flex-direction:column;gap:13px}
+.pvrow{display:grid;grid-template-columns:200px 1fr auto;align-items:center;gap:clamp(14px,2vw,26px);
+  padding:16px 20px;border-radius:14px;background:rgba(255,247,228,.06);border:1px solid rgba(255,247,228,.14)}
+.pvrow.sum{background:rgba(254,194,61,.12);border-color:var(--yellow)}
+.pvrow .pvname{font-family:'Rubik';font-weight:700;font-size:15.5px}
+.pvrow .pvname small{display:block;font-weight:400;font-size:12px;opacity:.65;margin-top:3px;font-family:'Assistant'}
+.pvbars{display:flex;flex-direction:column;gap:7px;min-width:0}
+.pvbar{display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:10px}
+.pvbar .bk{font-family:'Rubik';font-size:11.5px;opacity:.65;white-space:nowrap}
+.pvbar .bt{display:block;height:12px;border-radius:7px;background:rgba(255,247,228,.12);overflow:hidden}
+.pvbar .bf{display:block;height:100%;border-radius:7px;width:0;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.in .pvbar .bf{width:var(--w)}
+.pvbar.plan .bf{background:rgba(255,247,228,.38)}
+.pvbar.act .bf{background:var(--yellow)}
+.pvbar .bv{font-family:'Rubik';font-weight:700;font-size:13.5px;white-space:nowrap;min-width:92px;text-align:left}
+.pvpct{font-family:'Rubik';font-weight:800;font-size:clamp(20px,2.2vw,30px);color:var(--yellow);white-space:nowrap}
+.pvpct small{display:block;font-size:11px;font-weight:500;opacity:.7;color:var(--cream);margin-top:2px}
+@media(max-width:900px){.pvrow{grid-template-columns:1fr;gap:12px}}
+
+/* ================= INSIGHT LIST ================= */
+.ins{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.icard{border-radius:14px;padding:17px 20px;background:#fff;border:1px solid var(--line);box-shadow:0 6px 24px rgba(5,74,29,.06);
+  display:flex;gap:13px;align-items:flex-start}
+.icard .ik{font-family:'Rubik';font-weight:700;font-size:12px;letter-spacing:.04em;padding:5px 11px;border-radius:100px;
+  background:var(--cream-2);color:var(--green);white-space:nowrap;flex-shrink:0}
+.icard.good .ik{background:var(--green);color:var(--yellow)}
+.icard.warn .ik{background:var(--yellow);color:var(--green)}
+.icard p{font-size:14.2px;line-height:1.5;opacity:.88}
+.ins.one{grid-template-columns:1fr}
+@media(max-width:900px){.ins{grid-template-columns:1fr}}
+
+/* ================= FAILED ACTIVITY ================= */
+.fail{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(24px,4vw,52px);align-items:center}
+.fail-shots{display:flex;gap:13px}
+.fail-shots img{width:50%;border-radius:13px;box-shadow:0 14px 36px rgba(5,74,29,.2);display:block;
+  max-height:clamp(200px,36vh,360px);object-fit:cover;object-position:top}
+.fail-note{border-radius:16px;padding:22px 26px;background:#FFF1F4;border-right:6px solid var(--red)}
+.fail-note h4{font-family:'Rubik';font-weight:700;font-size:17px;color:var(--red);margin-bottom:9px}
+.fail-note p{font-size:15px;line-height:1.6;color:#4A2530}
+@media(max-width:900px){.fail{grid-template-columns:1fr}}
+
 /* ================= RESPONSIVE ================= */
 @media(max-width:1000px){
   .kpis,.kpis.five{grid-template-columns:repeat(2,1fr)}
@@ -280,15 +342,43 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
         <div class="blk reveal d3"><h4>המבנה</h4><p>סרטון עם השקעה תקציבית יחסית גדולה, משפיענים שיציגו את המוצר, מדיה.</p></div>
       </div>
       <div class="stack">
-        <div class="kpis" style="grid-template-columns:1fr 1fr">
-          <div class="kpi reveal d3"><div class="num">₪750,000</div><div class="lbl">תקציב כולל למהלך</div></div>
-          <div class="kpi reveal d4"><div class="num">2</div><div class="lbl">חודשי פעילות</div></div>
-          
-          
-        </div>
+        <div class="kpis" style="grid-template-columns:1fr"><div class="kpi reveal d3"><div class="num">2</div><div class="lbl">חודשי פעילות</div></div></div>
         <div class="quote reveal d7">ואז, עוד לפני שהקמפיין עלה לאוויר, המכירות בשטח אמרו משהו אחר.</div>
       </div>
     </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ תקציב ============ -->
+<section class="slide cream" data-dot="תקציב">
+  <div class="frame-t"><span class="slidetag">02 · תקציב</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">חלוקת התקציב</span>
+      <h2>₪750,000 — לאן הלך הכסף</h2>
+      <p>תקציב המהלך המלא והחלוקה שלו בין כלי הפעילות, באחוזים מתוך התקציב שהוקצה.</p>
+    </div>
+    <div class="pie-wrap reveal d1">
+      <div class="pie-box">
+        <svg class="pie" viewBox="0 0 100 100" aria-label="חלוקת תקציב">
+          <circle cx="50" cy="50" r="38" stroke="#054A1D" style="--d:144.16 1000" stroke-dashoffset="0"></circle>
+          <circle cx="50" cy="50" r="38" stroke="#12833A" style="--d:53.56 1000" stroke-dashoffset="-144.16"></circle>
+          <circle cx="50" cy="50" r="38" stroke="#FEC23D" style="--d:25.02 1000" stroke-dashoffset="-197.72"></circle>
+          <circle cx="50" cy="50" r="38" stroke="#E0164B" style="--d:12.81 1000" stroke-dashoffset="-222.74"></circle>
+          <circle cx="50" cy="50" r="38" stroke="#9BB89F" style="--d:3.2 1000" stroke-dashoffset="-235.55"></circle>
+        </svg>
+        <div class="pie-total"><div class="pt-n">₪750,000</div><div class="pt-l">תקציב המהלך</div></div>
+      </div>
+      <div class="legend">
+        <div class="lrow"><i style="background:#054A1D"></i><span class="ln">מדיה</span><span class="lv">₪450,000</span><span class="lp">60.4%</span></div>
+        <div class="lrow"><i style="background:#12833A"></i><span class="ln">משפיענים <small style="opacity:.6;font-weight:400">כולל משלוחים וזכויות קידום</small></span><span class="lv">₪167,200</span><span class="lp">22.4%</span></div>
+        <div class="lrow"><i style="background:#FEC23D"></i><span class="ln">ברטרים <small style="opacity:.6;font-weight:400">כולל משלוחים וזכויות קידום</small></span><span class="lv">₪78,100</span><span class="lp">10.5%</span></div>
+        <div class="lrow"><i style="background:#E0164B"></i><span class="ln">הפקה</span><span class="lv">₪40,000</span><span class="lp">5.4%</span></div>
+        <div class="lrow"><i style="background:#9BB89F"></i><span class="ln">יום צילום</span><span class="lv">₪10,000</span><span class="lp">1.3%</span></div>
+      </div>
+    </div>
+    <p class="src reveal d2">האחוזים מחושבים מתוך ₪745,300 שהוקצו בפועל בגיליון ״סדר בתקציבים״. התכנון המקורי עמד על ₪750,000 — ₪250,000 לשלב א' ו־₪500,000 לשלב ב'.</p>
   </div>
   <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
 </section>
@@ -313,6 +403,46 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
         <div class="quote reveal d5">אז שינינו כיוון — עוד לפני שהקמפיין עלה.</div>
       </div>
     </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ תכנון מול ביצוע ============ -->
+<section class="slide forest" data-dot="תכנון מול ביצוע">
+  <div class="frame-t"><span class="slidetag">04 · תכנון מול ביצוע</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">יעדים מול תוצאות</span>
+      <h2>37.7 מיליון מול יעד של 33.3 מיליון</h2>
+      <p>היעדים נקבעו מראש בגאנט המדיה והיח״צ: 3.3 מיליון חשיפות לשלב א' ו־20–30 מיליון לשלב ב'.</p>
+    </div>
+    <div class="pva">
+      <div class="pvrow reveal d1">
+        <div class="pvname">שלב א' · תוכן ומשפיענים<small>ברטרים ויוצרי תוכן יחד</small></div>
+        <div class="pvbars">
+          <div class="pvbar plan"><span class="bk">יעד</span><span class="bt"><span class="bf" style="--w:72%"></span></span><span class="bv">3,300,000</span></div>
+          <div class="pvbar act"><span class="bk">בפועל</span><span class="bt"><span class="bf" style="--w:100%"></span></span><span class="bv">4,588,548</span></div>
+        </div>
+        <div class="pvpct"><span class="ltr">139%</span><small>עמידה ביעד</small></div>
+      </div>
+      <div class="pvrow reveal d2">
+        <div class="pvname">שלב ב' · מדיה<small>יעד שהוגדר כטווח</small></div>
+        <div class="pvbars">
+          <div class="pvbar plan"><span class="bk">יעד</span><span class="bt"><span class="bf" style="--w:90%"></span></span><span class="bv">20–30 מיליון</span></div>
+          <div class="pvbar act"><span class="bk">בפועל</span><span class="bt"><span class="bf" style="--w:100%"></span></span><span class="bv">33,155,279</span></div>
+        </div>
+        <div class="pvpct"><span class="ltr">111%</span><small>מהיעד העליון</small></div>
+      </div>
+      <div class="pvrow sum reveal d3">
+        <div class="pvname">סה״כ המהלך</div>
+        <div class="pvbars">
+          <div class="pvbar plan"><span class="bk">יעד</span><span class="bt"><span class="bf" style="--w:88%"></span></span><span class="bv">23.3–33.3 מיליון</span></div>
+          <div class="pvbar act"><span class="bk">בפועל</span><span class="bt"><span class="bf" style="--w:100%"></span></span><span class="bv">37,743,827</span></div>
+        </div>
+        <div class="pvpct"><span class="ltr">113%</span><small>מהיעד העליון</small></div>
+      </div>
+    </div>
+    <p class="src reveal d4">שלב א' בפועל = 1,839,048 צפיות אורגניות (ברטרים ומשפיענים) + 2,749,500 צפיות בקידום הברטרים. קידום המשפיענים ממומן מתקציב המדיה ולכן נספר בשלב ב' בלבד. מקור היעדים: גאנט ״עוף טוב – מדיה ויח״צ – נאגטס״.</p>
   </div>
   <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
 </section>
@@ -395,7 +525,7 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
   <div class="wrap">
     <div class="shead reveal">
       <span class="eyebrow">שלב א' · יוצרי תוכן</span>
-      <h2>29 יוצרים בברטר. 8 משפיענים. מנוע אחד.</h2>
+      <h2>סך עמידה ביעד</h2>
       <p>שלב א' רץ לפני עליית המדיה, עם הקריאייטיב החדש בפיד האורגני של יוצרי התוכן והמשפיענים.</p>
     </div>
     <div class="kpis five">
@@ -403,12 +533,12 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
       <div class="kpi reveal d2"><div class="num">546,078</div><div class="lbl">צפיות אורגניות · ברטרים</div></div>
       <div class="kpi reveal d3"><div class="num">2,749,500</div><div class="lbl">צפיות בקידום · 5 ברטרים שקודמו</div></div>
       <div class="kpi reveal d4"><div class="num">8</div><div class="lbl">משפיענים מובילים</div><div class="sup">תקציב ₪208,500</div></div>
-      <div class="kpi reveal d5"><div class="num">1,250,970</div><div class="lbl">צפיות אורגניות · משפיענים</div></div>
+      <div class="kpi reveal d5"><div class="num">1,292,970</div><div class="lbl">צפיות אורגניות · משפיענים</div></div>
     </div>
     <div class="strip reveal d6" style="margin-top:clamp(18px,2.4vw,30px)">
       <img data-a="inf1" alt=""><img data-a="inf2" alt=""><img data-a="inf3" alt=""><img data-a="inf4" alt=""><img data-a="inf5" alt=""><img data-a="fry" alt="">
     </div>
-    <p class="src reveal d7">סה״כ צפיות אורגניות בשלב א': <b>1,797,048</b> — ברטרים ומשפיענים יחד, ללא קידום ממומן.</p>
+    <p class="src reveal d7">סה״כ צפיות אורגניות בשלב א': <b>1,839,048</b> — ברטרים ומשפיענים יחד, ללא קידום ממומן.</p>
   </div>
   <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
 </section>
@@ -446,18 +576,38 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
               <td><span class="perf near"><span class="pv">71%</span><span class="pt"><span class="pf" style="--w:49%"></span></span></span></td><td style="opacity:.7"><span class="ltr">−6,774</span></td><td class="mut">—</td></tr>
           <tr><td class="name">זוהר גורמס</td><td class="mut">₪20,000</td><td class="mut">135,500</td><td>91,941</td>
               <td><span class="perf near"><span class="pv">68%</span><span class="pt"><span class="pf" style="--w:47%"></span></span></span></td><td style="opacity:.7"><span class="ltr">−43,559</span></td><td class="mut">1,406,000</td></tr>
+          <tr><td class="name">נועם פירוז</td><td class="mut">₪22,000</td><td class="mut">300,000</td><td>176,524</td>
+              <td><span class="perf under"><span class="pv">59%</span><span class="pt"><span class="pf" style="--w:41%"></span></span></span></td><td style="opacity:.7"><span class="ltr">−123,476</span></td><td class="mut">644,500</td></tr>
           <tr><td class="name">יונג</td><td class="mut">₪18,000</td><td class="mut">460,000</td><td>254,585</td>
               <td><span class="perf under"><span class="pv">55%</span><span class="pt"><span class="pf" style="--w:38%"></span></span></span></td><td style="opacity:.7"><span class="ltr">−205,415</span></td><td class="mut">2,595,000</td></tr>
           <tr><td class="name">עידו בלאו</td><td class="mut">₪25,000</td><td class="mut">140,000</td><td>71,240</td>
               <td><span class="perf under"><span class="pv">51%</span><span class="pt"><span class="pf" style="--w:35%"></span></span></span></td><td style="opacity:.7"><span class="ltr">−68,760</span></td><td class="mut">1,385,000</td></tr>
-          <tr><td class="name">נועם פירוז</td><td class="mut">₪22,000</td><td class="mut">300,000</td><td>134,524</td>
-              <td><span class="perf under"><span class="pv">45%</span><span class="pt"><span class="pf" style="--w:31%"></span></span></span></td><td style="opacity:.7"><span class="ltr">−165,476</span></td><td class="mut">644,500</td></tr>
-          <tr class="tot"><td class="name">סה״כ</td><td>₪141,500</td><td>1,608,500</td><td>1,250,970</td>
-              <td><span class="perf near"><span class="pv">78%</span><span class="pt"><span class="pf" style="--w:54%"></span></span></span></td><td><span class="ltr">−357,530</span></td><td>11,201,500</td></tr>
+          <tr class="tot"><td class="name">סה״כ</td><td>₪141,500</td><td>1,608,500</td><td>1,292,970</td>
+              <td><span class="perf near"><span class="pv">80%</span><span class="pt"><span class="pf" style="--w:55%"></span></span></span></td><td><span class="ltr">−315,530</span></td><td>11,201,500</td></tr>
         </tbody>
       </table>
     </div>
     <p class="src reveal d2">3 מתוך 8 המשפיענים עברו את צפי הצפיות האורגני. הקידום הממומן הניב 11.2 מיליון חשיפות נוספות, ומדווח בנפרד. עמודת ״צפי צפיות״ מתוך גיליון ״שלב א״ בתוכנית העבודה; ״בפועל״ מתוך דוח סיכום הקמפיין. איתי בן שמחון פעל בפעימה אחת ללא קידום ממומן.</p>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ מסקנות שלב א' ============ -->
+<section class="slide paper" data-dot="מסקנות שלב א'">
+  <div class="frame-t"><span class="slidetag">11 · מסקנות שלב א'</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">תוכן ומשפיענים</span>
+      <h2>מה למדנו על העבודה עם היוצרים</h2>
+    </div>
+    <div class="ins">
+      <div class="icard good reveal d1"><span class="ik">שיר צ׳יפ</span><p>הוסיפה תוכן גם בפייסבוק וגם בשורטס ביוטיוב, מעבר למה שסוכם בחוזה.</p></div>
+      <div class="icard good reveal d2"><span class="ik">יונג</span><p>עלה גם עם פעימה, למרות שהתחייב רק לטיקטוק וריל.</p></div>
+      <div class="icard warn reveal d3"><span class="ik">נועם פירוז</span><p>עדיף לקחת אותו רק לפלטפורמה שהוא חזק בה — יוטיוב.</p></div>
+      <div class="icard warn reveal d4"><span class="ik">איתי בן שמחון</span><p>לא רק בסטורי, אלא גם בתוכן שאפשר לקדם מהפיד.</p></div>
+      <div class="icard good reveal d5"><span class="ik">מיטל</span><p>עבדה מעולה — אינטראקציה מחוץ למסך, שבאה לידי ביטוי אחר כך גם במסך בסושיאל.</p></div>
+      <div class="icard reveal d6"><span class="ik">ברטרים</span><p>עבדו טוב, אבל צריך להבין את תנאי ההסכם — הוא בלי אישורים.</p></div>
+    </div>
   </div>
   <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
 </section>
@@ -471,24 +621,37 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
       <h2>אינטראקציות על תוכן המשפיענים</h2>
       <p>סיכום המעורבות שנמדדה על תוכן המשפיענים בשלב א' — לייקים, שיתופים, שמירות ותגובות.</p>
     </div>
-    <div class="two wide">
-      <div>
-        <div class="kpis" style="grid-template-columns:repeat(2,1fr)">
-          <div class="kpi reveal d1"><div class="num">13,818</div><div class="lbl">לייקים</div></div>
-          <div class="kpi reveal d2"><div class="num">11,883</div><div class="lbl">שיתופים</div></div>
-          <div class="kpi reveal d3"><div class="num">9,996</div><div class="lbl">שמירות</div></div>
-          <div class="kpi reveal d4"><div class="num">2,995</div><div class="lbl">תגובות</div></div>
-        </div>
-        <div class="blk reveal d5" style="margin-top:14px;display:flex;align-items:baseline;gap:14px">
-          <div class="kn">38,692</div><p style="margin:0">סה״כ אינטראקציות בשלב התוכן.</p>
-        </div>
+    <div class="kpis five">
+      <div class="kpi reveal d1"><div class="num">13,818</div><div class="lbl">לייקים</div></div>
+      <div class="kpi reveal d2"><div class="num">11,883</div><div class="lbl">שיתופים</div></div>
+      <div class="kpi reveal d3"><div class="num">9,996</div><div class="lbl">שמירות</div></div>
+      <div class="kpi reveal d4"><div class="num">2,995</div><div class="lbl">תגובות</div></div>
+      <div class="kpi reveal d5"><div class="num">38,692</div><div class="lbl">סה״כ אינטראקציות</div></div>
+    </div>
+    <div class="strip reveal d6" style="margin-top:clamp(18px,2.4vw,30px)">
+      <img data-a="inf3" alt=""><img data-a="inf6" alt=""><img data-a="inf2" alt=""><img data-a="woltinf" alt=""><img data-a="inf4" alt="">
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ פעילות שלא עבדה ============ -->
+<section class="slide cream" data-dot="מה לא עבד">
+  <div class="frame-t"><span class="slidetag">13 · מה לא עבד</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">שלב א' · לקח</span>
+      <h2>פעילות שלא עבדה בקמפיין</h2>
+      <p>שיתוף פעולה ממומן עם קהילת האוכל ״רעבים ברעבך״ בפייסבוק, בתקציב ₪20,000.</p>
+    </div>
+    <div class="fail">
+      <div class="fail-shots reveal d1">
+        <img data-a="fb1" alt="פוסט בקבוצת רעבים ברעבך">
+        <img data-a="fb2" alt="פוסט בקבוצת רעבים ברעבך">
       </div>
-      <div class="stack">
-        <div class="blk reveal d3"><h4>פעילות ״רעבים ברעבך״</h4><p>שיתוף פעולה ממומן עם קהילת האוכל ״רעבים ברעבך״ בפייסבוק, בתקציב ₪20,000.</p></div>
-        <div class="reveal d4" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <img data-a="fb1" alt="פוסט בקבוצת רעבים ברעבך" style="width:100%;height:clamp(130px,22vh,200px);object-fit:cover;object-position:center top;border-radius:14px;box-shadow:0 12px 30px rgba(5,74,29,.2)">
-          <img data-a="fb2" alt="פוסט בקבוצת רעבים ברעבך" style="width:100%;height:clamp(130px,22vh,200px);object-fit:cover;object-position:center top;border-radius:14px;box-shadow:0 12px 30px rgba(5,74,29,.2)">
-        </div>
+      <div class="fail-note reveal d2">
+        <h4>למה זה לא עבד</h4>
+        <p>פחות נכון לעשות שיתופי פעולה עם קבוצות פייסבוק. יש יותר תגובות רעות שמחפשים להשמיץ, ופחות אוהבים תוכן ממומן בקבוצה.</p>
       </div>
     </div>
   </div>
@@ -560,8 +723,8 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
     <div class="kpis">
       <div class="kpi reveal d1"><div class="num">33,155,279</div><div class="lbl">חשיפות מדיה · שלב ב'</div></div>
       <div class="kpi reveal d2"><div class="num">2,749,500</div><div class="lbl">צפיות בקידום ברטרים · שלב א'</div></div>
-      <div class="kpi reveal d3"><div class="num">1,797,048</div><div class="lbl">צפיות אורגניות · ברטרים ומשפיענים</div></div>
-      <div class="kpi reveal d4"><div class="num">37,701,827</div><div class="lbl">סה״כ חשיפות וצפיות</div></div>
+      <div class="kpi reveal d3"><div class="num">1,839,048</div><div class="lbl">צפיות אורגניות · ברטרים ומשפיענים</div></div>
+      <div class="kpi reveal d4"><div class="num">37,743,827</div><div class="lbl">סה״כ חשיפות וצפיות</div></div>
     </div>
     <div class="stack" style="margin-top:clamp(16px,2.2vw,26px)">
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
@@ -620,6 +783,15 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
     var k=el.getAttribute('data-a');
     if(A[k]) el.src=A[k];
   });
+  (function(){
+    var ss=[].slice.call(document.querySelectorAll('.slide'));
+    ss.forEach(function(s,i){
+      var tag=s.querySelector('.slidetag');
+      if(!tag) return;
+      var label=tag.textContent.replace(/^\s*\d+\s*·\s*/,'');
+      tag.textContent=('0'+(i+1)).slice(-2)+' · '+label;
+    });
+  })();
   document.querySelectorAll('[data-logo]').forEach(function(el){
     var dark=el.closest('.slide') && el.closest('.slide').classList.contains('forest');
     el.src = dark ? A.logo42_cream : A.logo42_green;
