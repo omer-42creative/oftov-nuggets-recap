@@ -279,6 +279,18 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
 .neggrid img{width:100%;display:block;height:clamp(135px,25vh,225px);object-fit:cover;object-position:center top}
 @media(max-width:900px){.neggrid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.neggrid{grid-template-columns:1fr}}
+/* ================= STARTING POINT CARDS ================= */
+.startgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);align-items:stretch}
+.scard{border-radius:18px;padding:clamp(22px,2.6vw,32px);border:1px solid rgba(255,247,228,.16);
+  background:rgba(255,247,228,.06);display:flex;flex-direction:column}
+.scard .sk{font-family:'Rubik';font-weight:800;font-size:12.5px;letter-spacing:.16em;color:var(--yellow);opacity:.65;margin-bottom:14px}
+.scard h4{font-family:'Rubik';font-weight:700;font-size:clamp(17px,1.7vw,21px);margin-bottom:11px}
+.scard p{font-size:14.8px;line-height:1.55;opacity:.85}
+.scard.hot{border-color:var(--yellow);background:rgba(254,194,61,.11);box-shadow:0 0 44px rgba(254,194,61,.12)}
+.scard.hot .sk{opacity:1}
+.scard .msg{font-family:'Rubik';font-weight:800;font-size:clamp(18px,2vw,26px);line-height:1.25;
+  color:var(--yellow);opacity:1;margin-bottom:12px}
+@media(max-width:900px){.startgrid{grid-template-columns:1fr}}
 /* ================= RESPONSIVE ================= */
 @media(max-width:1000px){
   .kpis,.kpis.five{grid-template-columns:repeat(2,1fr)}
@@ -333,30 +345,6 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
   <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
 </section>
 
-<!-- ============ 2 · נקודת הפתיחה ============ -->
-<section class="slide forest" data-dot="נקודת הפתיחה">
-  <div class="frame-t"><span class="slidetag">01 · נקודת הפתיחה</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
-  <div class="wrap">
-    <div class="shead reveal">
-      <span class="eyebrow">איפה התחלנו</span>
-      <h2>הראשונים בקטגוריה</h2>
-      <p>עוף טוב יצאו עם נאגטס ביתי — מוצר שלא היה קיים בקטגוריה עד אז. הכיוון הראשוני היה קמפיין השקה מוצרי: להציג מוצר חדש ולהניע ניסיון ראשון.</p>
-    </div>
-    <div class="two">
-      <div class="stack">
-        <div class="blk reveal d1"><h4>המשימה</h4><p>להשיק את נאגטס עוף טוב, לבנות מודעות רחבה ולהניע ניסיון ראשון בקרב משפחות וצעירים.</p></div>
-        <div class="blk reveal d2"><h4>הכיוון הראשוני</h4><p>קמפיין השקה עם המסר <b>״בואו לאכול נאגטס בבית״</b>.</p></div>
-        <div class="blk reveal d3"><h4>המבנה</h4><p>סרטון עם השקעה תקציבית יחסית גדולה, משפיענים שיציגו את המוצר, מדיה.</p></div>
-      </div>
-      <div class="stack">
-        <div class="kpis" style="grid-template-columns:1fr"><div class="kpi reveal d3"><div class="num">2</div><div class="lbl">חודשי פעילות</div></div></div>
-        <div class="quote reveal d7">ואז, עוד לפני שהקמפיין עלה לאוויר, המכירות בשטח אמרו משהו אחר.</div>
-      </div>
-    </div>
-  </div>
-  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
-</section>
-
 <!-- ============ תקציב ============ -->
 <section class="slide cream" data-dot="תקציב">
   <div class="frame-t"><span class="slidetag">02 · תקציב</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
@@ -370,24 +358,55 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
       <div class="pie-box">
         <svg class="pie" viewBox="0 0 100 100" aria-label="חלוקת תקציב">
           <circle cx="50" cy="50" r="38" stroke="#054A1D" style="--d:143.26 1000" stroke-dashoffset="0"></circle>
-          <circle cx="50" cy="50" r="38" stroke="#12833A" style="--d:53.23 1000" stroke-dashoffset="-143.26"></circle>
-          <circle cx="50" cy="50" r="38" stroke="#FEC23D" style="--d:24.86 1000" stroke-dashoffset="-196.49"></circle>
-          <circle cx="50" cy="50" r="38" stroke="#E0164B" style="--d:12.73 1000" stroke-dashoffset="-221.35"></circle>
-          <circle cx="50" cy="50" r="38" stroke="#9BB89F" style="--d:3.18 1000" stroke-dashoffset="-234.08"></circle>
-          <circle cx="50" cy="50" r="38" stroke="#D8D2C0" style="--d:1.5 1000" stroke-dashoffset="-237.26"></circle>
+          <circle cx="50" cy="50" r="38" stroke="#12833A" style="--d:53.29 1000" stroke-dashoffset="-143.26"></circle>
+          <circle cx="50" cy="50" r="38" stroke="#FEC23D" style="--d:24.86 1000" stroke-dashoffset="-196.55"></circle>
+          <circle cx="50" cy="50" r="38" stroke="#E0164B" style="--d:12.73 1000" stroke-dashoffset="-221.41"></circle>
+          <circle cx="50" cy="50" r="38" stroke="#9BB89F" style="--d:3.18 1000" stroke-dashoffset="-234.14"></circle>
+          <circle cx="50" cy="50" r="38" stroke="#E9A916" style="--d:1.43 1000" stroke-dashoffset="-237.32"></circle>
         </svg>
         <div class="pie-total"><div class="pt-n">₪750,000</div><div class="pt-l">תקציב המהלך</div></div>
       </div>
       <div class="legend">
         <div class="lrow"><i style="background:#054A1D"></i><span class="ln">מדיה</span><span class="lv">₪450,000</span><span class="lp">60%</span></div>
-        <div class="lrow"><i style="background:#12833A"></i><span class="ln">משפיענים <small style="opacity:.6;font-weight:400">כולל משלוחים וזכויות קידום</small></span><span class="lv">₪167,200</span><span class="lp">22.3%</span></div>
+        <div class="lrow"><i style="background:#12833A"></i><span class="ln">משפיענים <small style="opacity:.6;font-weight:400">כולל משלוחים וזכויות קידום</small></span><span class="lv">₪167,400</span><span class="lp">22.3%</span></div>
         <div class="lrow"><i style="background:#FEC23D"></i><span class="ln">ברטרים <small style="opacity:.6;font-weight:400">כולל משלוחים וזכויות קידום</small></span><span class="lv">₪78,100</span><span class="lp">10.4%</span></div>
         <div class="lrow"><i style="background:#E0164B"></i><span class="ln">הפקה</span><span class="lv">₪40,000</span><span class="lp">5.3%</span></div>
         <div class="lrow"><i style="background:#9BB89F"></i><span class="ln">יום צילום</span><span class="lv">₪10,000</span><span class="lp">1.3%</span></div>
-        <div class="lrow"><i style="background:#D8D2C0"></i><span class="ln">יתרה לא משויכת</span><span class="lv">₪4,700</span><span class="lp">0.6%</span></div>
+        <div class="lrow"><i style="background:#E9A916"></i><span class="ln">מיטל</span><span class="lv">₪4,500</span><span class="lp">0.6%</span></div>
       </div>
     </div>
-    <p class="src reveal d2">האחוזים מחושבים מתוך תקציב המהלך המלא, ₪750,000 — ₪250,000 לשלב א' ו־₪500,000 לשלב ב'. הסעיפים המפורטים בגיליון ״סדר בתקציבים״ מסתכמים ב־₪745,300, והיתרה אינה משויכת לסעיף.</p>
+    <p class="src reveal d2">האחוזים מחושבים מתוך תקציב המהלך המלא, ₪750,000 — ₪250,000 לשלב א' ו־₪500,000 לשלב ב'. מקור החלוקה: גיליון ״סדר בתקציבים״.</p>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ 2 · נקודת הפתיחה ============ -->
+<section class="slide forest" data-dot="נקודת הפתיחה">
+  <div class="frame-t"><span class="slidetag">01 · נקודת הפתיחה</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">איפה התחלנו</span>
+      <h2>הראשונים בקטגוריה</h2>
+      <p>עוף טוב יצאו עם נאגטס ביתי — מוצר שלא היה קיים בקטגוריה עד אז. הכיוון הראשוני היה קמפיין השקה מוצרי: להציג מוצר חדש ולהניע ניסיון ראשון.</p>
+    </div>
+    <div class="startgrid">
+      <div class="scard reveal d1">
+        <span class="sk">01</span>
+        <h4>המשימה</h4>
+        <p>להשיק את נאגטס עוף טוב, לבנות מודעות רחבה ולהניע ניסיון ראשון בקרב משפחות וצעירים.</p>
+      </div>
+      <div class="scard hot reveal d2">
+        <span class="sk">02</span>
+        <h4>הכיוון הראשוני</h4>
+        <p class="msg">״בואו לאכול נאגטס בבית״</p>
+        <p>קמפיין השקה מוצרי, סביב המסר הזה.</p>
+      </div>
+      <div class="scard reveal d3">
+        <span class="sk">03</span>
+        <h4>המבנה</h4>
+        <p>סרטון עם השקעה תקציבית יחסית גדולה, משפיענים שיציגו את המוצר, ומדיה.</p>
+      </div>
+    </div>
   </div>
   <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
 </section>
