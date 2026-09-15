@@ -272,6 +272,13 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
 .fail-note p{font-size:15px;line-height:1.6;color:#4A2530}
 @media(max-width:900px){.fail{grid-template-columns:1fr}}
 
+/* ================= NEGATIVE COMMENTS GRID ================= */
+.neggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,20px)}
+.neggrid figure{border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--line);
+  box-shadow:0 8px 26px rgba(5,74,29,.08)}
+.neggrid img{width:100%;display:block;height:clamp(135px,25vh,225px);object-fit:cover;object-position:center top}
+@media(max-width:900px){.neggrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.neggrid{grid-template-columns:1fr}}
 /* ================= RESPONSIVE ================= */
 @media(max-width:1000px){
   .kpis,.kpis.five{grid-template-columns:repeat(2,1fr)}
@@ -653,6 +660,27 @@ h1,h2,h3,h4,.num,.rk{font-family:'Rubik',sans-serif}
         <h4>למה זה לא עבד</h4>
         <p>פחות נכון לעשות שיתופי פעולה עם קבוצות פייסבוק. יש יותר תגובות רעות שמחפשים להשמיץ, ופחות אוהבים תוכן ממומן בקבוצה.</p>
       </div>
+    </div>
+  </div>
+  <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
+</section>
+
+<!-- ============ תגובות שליליות ============ -->
+<section class="slide paper" data-dot="תגובות">
+  <div class="frame-t"><span class="slidetag">14 · תגובות</span><span class="rule"></span><img class="logo42" data-logo alt="42 - ארבעים ושתיים"></div>
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">נכסי המותג</span>
+      <h2>תגובות שליליות שהתקבלו בנכסים</h2>
+      <p>צילומי מסך מתוך התגובות על פוסטי הקמפיין בעמודי עוף טוב.</p>
+    </div>
+    <div class="neggrid">
+      <figure class="reveal d1"><img data-a="neg1" alt="תגובה שלילית בנכסי המותג"></figure>
+      <figure class="reveal d2"><img data-a="neg2" alt="תגובה שלילית בנכסי המותג"></figure>
+      <figure class="reveal d3"><img data-a="neg3" alt="תגובה שלילית בנכסי המותג"></figure>
+      <figure class="reveal d4"><img data-a="neg4" alt="תגובה שלילית בנכסי המותג"></figure>
+      <figure class="reveal d5"><img data-a="neg5" alt="תגובה שלילית בנכסי המותג"></figure>
+      <figure class="reveal d6"><img data-a="neg6" alt="תגובה שלילית בנכסי המותג"></figure>
     </div>
   </div>
   <div class="frame-b"><img class="oftov" data-a="oftov" alt="עוף טוב"><span class="rule"></span></div>
